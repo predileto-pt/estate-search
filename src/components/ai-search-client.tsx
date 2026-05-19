@@ -17,6 +17,7 @@ interface AISearchClientProps {
   locale: string;
   initialQuery?: string;
   initialLocation?: LocationSelection | null;
+  landingFooter?: React.ReactNode;
 }
 
 export function AISearchClient({
@@ -24,6 +25,7 @@ export function AISearchClient({
   locale,
   initialQuery,
   initialLocation,
+  landingFooter,
 }: AISearchClientProps) {
   return (
     <AISearchPage
@@ -31,6 +33,7 @@ export function AISearchClient({
       locale={locale}
       initialQuery={initialQuery}
       initialLocation={initialLocation}
+      landingFooter={landingFooter}
     />
   );
 }

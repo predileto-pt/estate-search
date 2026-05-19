@@ -54,6 +54,7 @@ interface AISearchPageProps {
   locale: string;
   initialQuery?: string;
   initialLocation?: LocationSelection | null;
+  landingFooter?: React.ReactNode;
 }
 
 type SearchError =
@@ -102,6 +103,7 @@ export function AISearchPage({
   locale,
   initialQuery,
   initialLocation = null,
+  landingFooter,
 }: AISearchPageProps) {
   const router = useRouter();
   const [messages, setMessages] = useAtom(messagesAtom(listingType));
@@ -270,13 +272,16 @@ export function AISearchPage({
 
   if (!hasSearched) {
     return (
-      <UnsearchedLanding
-        listingType={listingType}
-        locale={locale}
-        initialQuery={initialQuery}
-        initialLocation={initialLocation}
-        onSearch={handleSearch}
-      />
+      <>
+        <UnsearchedLanding
+          listingType={listingType}
+          locale={locale}
+          initialQuery={initialQuery}
+          initialLocation={initialLocation}
+          onSearch={handleSearch}
+        />
+        {landingFooter}
+      </>
     );
   }
 
